@@ -1,12 +1,12 @@
 import s from './WeatherAPP.module.css';
-import tempMax from './../../assets/img/tempMax.png';
-import tempMin from './../../assets/img/tempMin.png';
-import wind from './../../assets/img/wind.png';
-import sky from './../../assets/img/sky.png';
-import water from './../../assets/img/water.png';
-import sunny from './../../assets/img/sunny.png';
-import search from './../../assets/img/search.svg';
-import moon from './../../assets/img/moon.png';
+import tempMax from './../../assets/img/icons/tempMax.png';
+import tempMin from './../../assets/img/icons/tempMin.png';
+import wind from './../../assets/img/icons/wind.png';
+import sky from './../../assets/img/icons/sky.png';
+import water from './../../assets/img/icons/water.png';
+import sunny from './../../assets/img/icons/sunny.png';
+import search from './../../assets/img/icons/search.svg';
+import moon from './../../assets/img/icons/moon.png';
 import Details from './Details';
 import Forecast from './Forecast';
 
@@ -21,13 +21,13 @@ const WeatherSearch = (props) => {
                 </div>
                 <div className={s.details}>
                     <div className={s.title_details}>Weather Details</div>
-                    <div className={s.weather_subtitle}>clear sky</div>
+                    <div className={s.weather_subtitle}>{props.weatherDescription}</div>
                     <div className={s.weather_details}>
-                        <Details title='Temp Max' data='27°' img={tempMax} classNames={s.temp_details} />
-                        <Details title='Temp Min' data='21°' img={tempMin} classNames={s.temp_details} />
-                        <Details title='Humidity' data='46%' img={water} />
-                        <Details title='Cloudy' data='62%' img={sky} />
-                        <Details title='Wind' data='8km/h' img={wind} />
+                        <Details title='Temp Max' data={`${props.tempMax}°`} img={tempMax} classNames={s.temp_details} />
+                        <Details title='Temp Min' data={`${props.tempMin}°`} img={tempMin} classNames={s.temp_details} />
+                        <Details title='Humidity' data={`${props.humidity}%`} img={water} />
+                        <Details title='Cloudy' data={`${props.cloudy}%`} img={sky} />
+                        <Details title='Wind' data={`${props.wind}km/h`} img={wind} />
                     </div>
                 </div>
                 <div className={s.line}></div>

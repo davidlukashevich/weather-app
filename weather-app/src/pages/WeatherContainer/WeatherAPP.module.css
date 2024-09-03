@@ -1,5 +1,5 @@
 body {
-    background-image: url('../../assets/img/bg-weather.png');
+    background-image: url('../../assets/img/background/clear.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -138,7 +138,7 @@ body {
 }
 
 .temp_details {
-    margin: 3px 0 0 10px;
+    margin: 2px 0 0 10px;
 }
 
 .forecast_info {
