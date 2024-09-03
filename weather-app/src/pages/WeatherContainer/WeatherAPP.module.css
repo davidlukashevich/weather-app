@@ -1,0 +1,178 @@
+body {
+    background-image: url('../../assets/img/bg-weather.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.weather {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.information {
+    color: #fff;
+    display: flex;
+    position: fixed;
+    bottom: 20%;
+    margin: 0 0 0 120px;
+}
+
+.temperature {
+    font-size: 120px;
+}
+
+.city {
+    margin: 40px 0 0 15px;
+}
+
+.city_name {
+    font-size: 50px;
+}
+
+.icon_img {
+    width: 60px;
+    height: 60px;
+    margin: 57px 0 0 15px;
+}
+
+.weather_page_search {
+    width: 36%;
+    border-block-start: none;
+    border-inline-start: 5px solid hsla(0, 0%, 100%, .14);
+    backdrop-filter: blur(.5em);
+    background-color: hsla(0, 0%, 100%, .04);
+}
+
+.weather_search {
+    margin: 20px 0 0 40px;
+}
+
+.details_info {
+    display: flex;
+}
+
+.line {
+    border: 0.5px solid #fff;
+    width: 350px;
+}
+
+.forecast_info {
+    display: flex;
+}
+
+.city_search {
+    display: flex;
+}
+
+.input_search {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    font-size: 20px;
+    color: #fff;
+    outline: none;
+    width: 350px;
+    padding: 0 0 10px 0;
+    display: flex;
+    position: relative;
+    margin: 15px 0 0 0;
+}
+
+.search_img {
+    position: absolute;
+    right: 130px;
+    margin: 15px 0 0 0;
+}
+
+.input_search::placeholder {
+    color: #C8D0D5;
+}
+
+.title_details {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    margin: 40px 0 50px 0;
+}
+
+.weather_subtitle {
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+}
+
+.weather_details {
+    margin: 40px 0 40px 0;
+}
+
+.details_info {
+    margin: 0 0 70px 0;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details_title {
+    color: #D0D8DE;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.details_about {
+    display: flex;
+}
+
+.details_data {
+    color: #fff;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 3px 25px 0 0;
+}
+
+.border_img {
+    width: 32px;
+    height: 32px;
+}
+
+.temp_details {
+    margin: 3px 0 0 10px;
+}
+
+.forecast_info {
+    margin: 0 0 70px 0;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.forecast_title {
+    display: flex;
+}
+
+.forecast_img {
+    height: 48px;
+    width: 42px;
+}
+
+.forecast_additional {
+    margin: 0 0 0 30px;
+}
+
+.forecast_time {
+    color: #fff;
+}
+
+.forecast_subtitle {
+    color: #C6CED3;
+}
+
+.forecast_data {
+    color: #B9C1C2;
+    font-size: 25px;
+    margin: 7px 0 0 0;
+}
