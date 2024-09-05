@@ -1,16 +1,35 @@
 import { WeatherAPI } from "../api/api";
 
 const SET_WEATHER = 'SET_WEATHER';
+const TOOGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING';
+const SET_ERROR = 'SET_ERROR';
 
-let initialState = {}
+let initialState = {
+    isFetching: false,
+    error: null
+}
 
 const weatherReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
         case SET_WEATHER: {
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                error: null
+            }
+        }
+
+        case TOOGLE_IS_FETCHING: {
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+        }
+
+        case SET_ERROR: {
+            return {
+                ...state,
+                error: action.error
             }
         }
 
@@ -21,33 +40,50 @@ const weatherReducer = (state = initialState, action) => {
 }
 
 export const setWeatherInfoActionCreator = (data) => {
-    debugger
     return {
         type: SET_WEATHER,
         data
     }
 }
 
-export const setWeatherInfoThunkCreator = (city) => async (dispatch) => {
-    let response = await WeatherAPI.getCityInfo(city);
-    const info = response.data;
-    const key = Object.keys(info.forecast);
-    let newData = {
-        city: info.location.name,
-        country: info.location.country,
-        localTime: info.location.localtime,
-        weatherDescription: info.current.weather_descriptions[0],
-        tempMax: info.forecast[key].maxtemp,
-        tempMin: info.forecast[key].mintemp,
-        tempAverage: info.forecast[key].avgtemp,
-        humidity: info.current.humidity,
-        cloudy: info.current.cloudcover,
-        wind: info.current.wind_speed
+export const toogleIsFetchingActionCreator = (isFetching) => {
+    return {
+        type: TOOGLE_IS_FETCHING,
+        isFetching
     }
+}
 
-    if (response.data.succes !== 'false') {
-        dispatch(setWeatherInfoActionCreator(newData));
+export const setErrorActionCreator = (error) => {
+    return {
+        type: SET_ERROR, 
+        error
     }
+}
+
+export const setWeatherInfoThunkCreator = (city) => async (dispatch) => {
+    dispatch(toogleIsFetchingActionCreator(true));
+    let response = await WeatherAPI.getCityInfo(city);
+
+    if (response.data.success !== false) {
+        const info = response.data;
+        const key = Object.keys(info.forecast);
+        let newData = {
+            city: info.location.name,
+            country: info.location.country,
+            localTime: info.location.localtime,
+            weatherDescription: info.current.weather_descriptions[0],
+            tempMax: info.forecast[key].maxtemp,
+            tempMin: info.forecast[key].mintemp,
+            tempAverage: info.forecast[key].avgtemp,
+            humidity: info.current.humidity,
+            cloudy: info.current.cloudcover,
+            wind: info.current.wind_speed
+        }
+        dispatch(setWeatherInfoActionCreator(newData));
+    } else {
+        dispatch(setErrorActionCreator('Such a city does not exist'));
+    }
+    dispatch(toogleIsFetchingActionCreator(false));
 }
 
 export default weatherReducer;

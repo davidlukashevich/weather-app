@@ -1,0 +1,9 @@
+.loader {
+   width: 50%;
+   height: 50%;
+   margin: 10% 25%;
+}
+
+.border_loader {
+    background-color: black;
+}

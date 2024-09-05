@@ -9,16 +9,22 @@ import search from './../../assets/img/icons/search.svg';
 import moon from './../../assets/img/icons/moon.png';
 import Details from './Details';
 import Forecast from './Forecast';
+import { Field, Form, Formik } from 'formik';
 
 
 const WeatherSearch = (props) => {
     return (
         <div className={s.weather_search}>
             <aside className={s.weather_info}>
-                <div className={s.city_search}>
-                    <input className={s.input_search} placeholder='Search Location...' />
-                    <img src={search} className={s.search_img} />
-                </div>
+                <Formik initialValues={{ city: null }} onSubmit={props.submitCity}>
+                    <Form>
+                        <div className={s.city_search}>
+                            <Field className={s.input_search} placeholder='Search Location...' type={'text'} name={'city'} value={props.city} />
+                            <img src={search} className={s.search_img} />
+                        </div>
+                    </Form>
+                </Formik>
+                <div className={s.error}>{props.error}</div>
                 <div className={s.details}>
                     <div className={s.title_details}>Weather Details</div>
                     <div className={s.weather_subtitle}>{props.weatherDescription}</div>

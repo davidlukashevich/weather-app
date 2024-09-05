@@ -1,7 +1,7 @@
 import './App.css';
 import WeatherContainer from './pages/WeatherContainer/WeatherContainer';
 
-function App() {
+function App(props) {
   return (
     <div>
       <WeatherContainer />
