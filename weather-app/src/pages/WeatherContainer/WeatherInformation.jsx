@@ -9,7 +9,7 @@ const WeatherInformation = (props) => {
                 <div className={s.city_name}>{props.city}</div>
                 <div className={s.about_city}>{props.localTime}</div>
             </div>
-            <div className={s.icon}><img className={s.icon_img} src={sky} /></div>
+            <div className={s.icon}><img className={s.icon_img} src={props.icon} /></div>
         </div>
     );
 }

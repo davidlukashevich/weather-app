@@ -1,13 +1,44 @@
-body {
-    background-image: url('../../assets/img/background/clear.jpg');
+.weather {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.background {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.weather {
-    display: flex;
-    justify-content: space-between; 
+.night {
+    background-image: url('../../assets/img/background/night.jpg');
+}
+
+.clear {
+    background-image: url('../../assets/img/background/clear.jpg');
+}
+
+.clouds_night {
+    background-image: url('../../assets/img/background/clouds-night.jpg');
+}
+
+.clouds {
+    background-image: url('../../assets/img/background/clouds.jpg');
+}
+
+.mist {
+    background-image: url('../../assets/img/background/mist.jpg');
+}
+
+.rain {
+    background-image: url('../../assets/img/background/rain.jpg');
+}
+
+.snow {
+    background-image: url('../../assets/img/background/snow.jpg');
+}
+
+.storm {
+    background-image: url('../../assets/img/background/thunderstorm.jpg');
 }
 
 .information {
