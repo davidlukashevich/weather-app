@@ -122,7 +122,6 @@ export const setWeatherInfoThunkCreator = (city) => async (dispatch) => {
 }
 
 export const setBackgroundThunkCreator = (description, localTime) => (dispatch) => {
-    debugger
     let arr = localTime.split(' ');
     let local = arr[1].split(':');
     let descs = description.split(',');
