@@ -9,7 +9,8 @@ const WeatherPage = (props) => {
             <div className={s.weather_page_information}><WeatherInformation city={props.city} localTime={props.localTime} tempAverage={props.tempAverage} icon={props.icon} /></div>
             <div className={s.weather_page_search}><WeatherSearch
                 weatherDescription={props.weatherDescription} tempMax={props.tempMax} tempMin={props.tempMin}
-                humidity={props.humidity} cloudy={props.cloudy} wind={props.wind} submitCity={props.submitCity} error={props.error} />
+                humidity={props.humidity} cloudy={props.cloudy} wind={props.wind} submitCity={props.submitCity} error={props.error}
+                sunriseTime={props.sunriseTime} sunsetTime={props.sunsetTime} moonriseTime={props.moonriseTime} moonsetTime={props.moonsetTime} />
             </div>
         </div>
     );

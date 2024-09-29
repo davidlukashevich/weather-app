@@ -1,16 +1,26 @@
 import { WeatherAPI } from "../api/api";
 import s from '../../pages/WeatherContainer/WeatherAPP.module.css';
+import fog from '../../assets/img/icons/fog.png';
+import moon from '../../assets/img/icons/moon.png';
+import partlyCloudyMorning from '../../assets/img/icons/partlyCloudyMorning.png';
+import partlyCloudyNight from '../../assets/img/icons/partlyCloudyNight.png';
+import rain from '../../assets/img/icons/rain.png';
+import sky from '../../assets/img/icons/sky.png';
+import snow from '../../assets/img/icons/snow.png';
+import storm from '../../assets/img/icons/storm.png';
+import sunny from '../../assets/img/icons/sunny.png';
 
 const SET_WEATHER = 'SET_WEATHER';
 const TOOGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING';
 const SET_ERROR = 'SET_ERROR';
-const SET_BACKGROUND = 'SET_BACKGROUND';
+const SET_ANIMATION = 'SET_ANIMATION';
 
 
 let initialState = {
     isFetching: false,
     error: null,
-    background: null
+    background: null,
+    icon: null
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -37,10 +47,11 @@ const weatherReducer = (state = initialState, action) => {
             }
         }
 
-        case SET_BACKGROUND: {
+        case SET_ANIMATION: {
             return {
                 ...state,
-                background: action.classBack
+                background: action.classBack,
+                icon: action.icon
             }
         }
 
@@ -71,10 +82,11 @@ export const setErrorActionCreator = (error) => {
     }
 }
 
-export const setBackgroundActionCreator = (classBack) => {
+export const setAnimationDescriptionActionCreator = (classBack, icon) => {
     return {
-        type: SET_BACKGROUND,
-        classBack
+        type: SET_ANIMATION,
+        classBack,
+        icon
     }
 }
 
@@ -96,7 +108,10 @@ export const setWeatherInfoThunkCreator = (city) => async (dispatch) => {
             humidity: info.current.humidity,
             cloudy: info.current.cloudcover,
             wind: info.current.wind_speed,
-            icons: info.current.weather_icons[0]
+            sunriseTime: info.forecast[key].astro.sunrise,
+            sunsetTime: info.forecast[key].astro.sunset,
+            moonriseTime: info.forecast[key].astro.moonrise,
+            moonsetTime: info.forecast[key].astro.moonset
         }
         dispatch(setWeatherInfoActionCreator(newData));
         dispatch(setBackgroundThunkCreator(newData.weatherDescription, newData.localTime));
@@ -107,27 +122,30 @@ export const setWeatherInfoThunkCreator = (city) => async (dispatch) => {
 }
 
 export const setBackgroundThunkCreator = (description, localTime) => (dispatch) => {
+    debugger
     let arr = localTime.split(' ');
     let local = arr[1].split(':');
     let descs = description.split(',');
     let desc = descs[0];
 
-    if ((local[0] >= 20 || local[0] <= 6) && (desc === "Overcast" || desc === "Partly Cloudy" || desc === "Partly Cloudy " || desc === "Partly cloudy")) {
-        dispatch(setBackgroundActionCreator(s.clouds_night));
-    } else if ((local[0] >= 20 || local[0] <= 6) && (desc === "Sunny" || desc === "Clear" || desc === "Clear " || desc === "Haze" || desc === "Mist")) {
-        dispatch(setBackgroundActionCreator(s.night));
-    } else if (desc === "Rain Shower" || desc === "Light Rain Shower" || desc === "Light Rain" || desc === "Moderate rain" || desc === "Patchy rain nearby") {
-        dispatch(setBackgroundActionCreator(s.rain));
-    } else if (desc === "Overcast" || desc === "Partly Cloudy" || desc === "Partly Cloudy " || desc === "Partly cloudy") {
-        dispatch(setBackgroundActionCreator(s.clouds));
+    if ((local[0] >= 19 || local[0] <= 6) && (desc === "Overcast" || desc === "Overcast " || desc === "Partly Cloudy" || desc === "Partly Cloudy " || desc === "Partly cloudy")) {
+        dispatch(setAnimationDescriptionActionCreator(s.clouds_night, partlyCloudyNight));
+    } else if ((local[0] >= 20 || local[0] <= 6) && (desc === "Sunny" || desc === "Clear" || desc === "Clear " || desc === "Haze" || desc === "Mist" || desc === "Fog")) {
+        dispatch(setAnimationDescriptionActionCreator(s.night, moon));
+    } else if (desc === "Rain Shower" || desc === "Light Rain Shower" || desc === "Light Rain" || desc === "Moderate rain" || desc === "Patchy rain nearby" || desc === "Light Drizzle") {
+        dispatch(setAnimationDescriptionActionCreator(s.rain, rain));
+    } else if (desc === "Overcast" || desc === "Overcast ") {
+        dispatch(setAnimationDescriptionActionCreator(s.clouds, sky));
+    } else if (desc === "Partly Cloudy" || desc === "Partly Cloudy " || desc === "Partly cloudy") {
+        dispatch(setAnimationDescriptionActionCreator(s.clouds, partlyCloudyMorning));
     } else if (desc === "Sunny" || desc === "Clear" || desc === "Clear ") {
-        dispatch(setBackgroundActionCreator(s.clear));
-    } else if (desc === "Haze" || desc === "Mist") {
-        dispatch(setBackgroundActionCreator(s.mist));
+        dispatch(setAnimationDescriptionActionCreator(s.clear, sunny));
+    } else if (desc === "Haze" || desc === "Mist" || desc === "Fog") {
+        dispatch(setAnimationDescriptionActionCreator(s.mist, fog));
     } else if (desc === "Rain With Thunderstorm") {
-        dispatch(setBackgroundActionCreator(s.storm));
+        dispatch(setAnimationDescriptionActionCreator(s.storm, storm));
     } else if (desc === "Snow") {
-        dispatch(setBackgroundActionCreator(s.snow));
+        dispatch(setAnimationDescriptionActionCreator(s.snow, snow));
     }
 }
 

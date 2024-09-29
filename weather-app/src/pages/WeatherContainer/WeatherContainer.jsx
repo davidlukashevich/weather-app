@@ -37,8 +37,12 @@ let mapStateToProps = (state) => {
         cloudy: state.weather.cloudy,
         wind: state.weather.wind,
         isFetching: state.weather.isFetching,
-        icon: state.weather.icons,
+        icon: state.weather.icon,
         background: state.weather.background,
+        sunriseTime: state.weather.sunriseTime,
+        sunsetTime: state.weather.sunsetTime,
+        moonriseTime: state.weather.moonriseTime,
+        moonsetTime: state.weather.moonsetTime,
         error: state.weather.error
     }
 }

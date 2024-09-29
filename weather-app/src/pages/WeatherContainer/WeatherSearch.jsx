@@ -7,10 +7,11 @@ import water from './../../assets/img/icons/water.png';
 import sunny from './../../assets/img/icons/sunny.png';
 import search from './../../assets/img/icons/search.svg';
 import moon from './../../assets/img/icons/moon.png';
+import sunset from '../../assets/img/icons/sunset.png';
+import moonset from '../../assets/img/icons/moonset.png';
 import Details from './Details';
-import Forecast from './Forecast';
 import { Field, Form, Formik } from 'formik';
-
+import Astronomy from './Astronomy';
 
 const WeatherSearch = (props) => {
     return (
@@ -38,13 +39,12 @@ const WeatherSearch = (props) => {
                 </div>
                 <div className={s.line}></div>
                 <div className={s.forecast}>
-                    <div className={s.title_details}>Weather Forecast</div>
+                    <div className={s.title_details}>Weather Astronomy</div>
                     <div className={s.weather_forecast}>
-                        <Forecast time='18:00' subtitle='Clouds' data='21°' img={sunny} />
-                        <Forecast time='21:00' subtitle='Clouds' data='25°' img={sunny} />
-                        <Forecast time='00:00' subtitle='Clouds' data='22°' img={sky} />
-                        <Forecast time='03:00' subtitle='Clear' data='19°' img={moon} />
-                        <Forecast time='06:00' subtitle='Clear' data='20°' img={moon} />
+                        <Astronomy time={props.sunriseTime} subtitle='Sunrise' img={sunny} />
+                        <Astronomy time={props.sunsetTime} subtitle='Sunset' img={sunset} />
+                        <Astronomy time={props.moonriseTime} subtitle='Moonrise' img={moon} />
+                        <Astronomy time={props.moonsetTime} subtitle='Moonset' img={moonset} />
                     </div>
                 </div>
             </aside>

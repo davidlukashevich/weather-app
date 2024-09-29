@@ -190,22 +190,16 @@
     width: 42px;
 }
 
-.forecast_additional {
-    margin: 0 0 0 30px;
+.forecast_subtitle {
+    color: #fff;
+    margin: 10px 0 0 20px;
+    
 }
 
 .forecast_time {
-    color: #fff;
-}
-
-.forecast_subtitle {
-    color: #C6CED3;
-}
-
-.forecast_data {
     color: #B9C1C2;
     font-size: 25px;
-    margin: 7px 0 0 0;
+    margin: 6px 0 0 0;
 }
 
 .error {
