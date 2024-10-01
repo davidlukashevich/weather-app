@@ -129,7 +129,7 @@ export const setBackgroundThunkCreator = (description, localTime) => (dispatch) 
 
     if ((local[0] >= 19 || local[0] <= 6) && (desc === "Overcast" || desc === "Overcast " || desc === "Partly Cloudy" || desc === "Partly Cloudy " || desc === "Partly cloudy")) {
         dispatch(setAnimationDescriptionActionCreator(s.clouds_night, partlyCloudyNight));
-    } else if ((local[0] >= 20 || local[0] <= 6) && (desc === "Sunny" || desc === "Clear" || desc === "Clear " || desc === "Haze" || desc === "Mist" || desc === "Fog")) {
+    } else if ((local[0] >= 19 || local[0] <= 6) && (desc === "Sunny" || desc === "Clear" || desc === "Clear " || desc === "Haze" || desc === "Mist" || desc === "Fog")) {
         dispatch(setAnimationDescriptionActionCreator(s.night, moon));
     } else if (desc === "Rain Shower" || desc === "Light Rain Shower" || desc === "Light Rain" || desc === "Moderate rain" || desc === "Patchy rain nearby" || desc === "Light Drizzle" || desc === "Rain" || desc === "Shower In Vicinity") {
         dispatch(setAnimationDescriptionActionCreator(s.rain, rain));
