@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/weather-app/static/css/main.1678380e.css",
-    "main.js": "/weather-app/static/js/main.c350fded.js",
+    "main.js": "/weather-app/static/js/main.e38c4137.js",
     "static/js/453.0ccb7fb4.chunk.js": "/weather-app/static/js/453.0ccb7fb4.chunk.js",
     "static/media/rain.jpg": "/weather-app/static/media/rain.cd7dc4e856e4b80d0cbe.jpg",
     "static/media/night.jpg": "/weather-app/static/media/night.93b9d8e949c9ca5af27e.jpg",
@@ -15,11 +15,11 @@
     "static/media/search.svg": "/weather-app/static/media/search.0fbee4fed737319e045bbdbb636afb1a.svg",
     "index.html": "/weather-app/index.html",
     "main.1678380e.css.map": "/weather-app/static/css/main.1678380e.css.map",
-    "main.c350fded.js.map": "/weather-app/static/js/main.c350fded.js.map",
+    "main.e38c4137.js.map": "/weather-app/static/js/main.e38c4137.js.map",
     "453.0ccb7fb4.chunk.js.map": "/weather-app/static/js/453.0ccb7fb4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1678380e.css",
-    "static/js/main.c350fded.js"
+    "static/js/main.e38c4137.js"
   ]
 }
